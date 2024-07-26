@@ -20,5 +20,7 @@ struct test() {
 }
 
 a: int -> test.something()
-print a  * 2
+print a * 2
 ```
+
+*should* print 246 :-)
