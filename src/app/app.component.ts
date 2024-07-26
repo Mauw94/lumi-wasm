@@ -1,44 +1,46 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { WasmLoaderService } from './services/wasm-loader.service.js';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
-
-  title = "Hello world"
+  userInput: string = '';
+  result: string[] = [];
 
   private wasmInstance: any;
 
-  async ngOnInit() {
-    let test_code = `
-    struct test() {
-      fn something() {
-          return 123
-      }
-    }
+  constructor(private wasmLoaderService: WasmLoaderService) { }
 
-    a: int -> test.something()
-    print a
-    `
-
-    await this.loadWasm();
-    console.log(this.wasmInstance);
-    const test = this.wasmInstance.run_code(test_code)
-    console.log(test)
+  async ngOnInit(): Promise<void> {
+    await this.wasmLoaderService.loadWasm()
+    this.wasmInstance = this.wasmLoaderService.getWasmInstance()
   }
 
-  private async loadWasm() {
+  isButtonDisabled(): boolean {
+    return this.userInput.trim() === ''
+  }
+
+  runCode() {
     try {
-      const wasm = await import('../assets/pkg/lumi_lib.js');
-      await wasm.default('../assets/pkg/lumi_lib_bg.wasm')
-      this.wasmInstance = wasm
+      if (this.userInput.trim() === '') {
+        return
+      }
+
+      this.pruneRes(this.wasmInstance.run_code(this.userInput))
+      console.log(this.result)
     } catch (err) {
-      console.error('Error loading WebAssembly', err);
+      console.error("Something went wrong: ", err)
     }
+  }
+
+  private pruneRes(result: string[]): void {
+    this.result = result.filter(item => item !== 'null');
   }
 }

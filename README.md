@@ -5,3 +5,16 @@ Running lumi in a webapp using WebAssembly.
 Lumi was written and compiled to WebAssembly in Rust. 
 
 `https://github.com/Mauw94/lumi`
+
+
+# Input code to test with
+```
+struct test() {
+fn something() {
+    return 123
+}
+}
+
+a: int -> test.something()
+print a
+```
