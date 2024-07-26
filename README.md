@@ -10,9 +10,9 @@ Lumi was written and compiled to WebAssembly in Rust.
 # Input code to test with
 ```
 struct test() {
-fn something() {
-    return 123
-}
+    fn something() {
+        return 123
+    }
 }
 
 a: int -> test.something()
