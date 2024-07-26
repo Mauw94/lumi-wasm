@@ -1,0 +1,15 @@
+{
+  "name": "lumi",
+  "type": "module",
+  "version": "0.1.0",
+  "files": [
+    "lumi_lib_bg.wasm",
+    "lumi_lib.js",
+    "lumi_lib.d.ts"
+  ],
+  "main": "lumi_lib.js",
+  "types": "lumi_lib.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}
