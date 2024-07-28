@@ -8,12 +8,12 @@ export class WasmLoaderService {
 
     async loadWasm(): Promise<void> {
         try {
-            const wasm = await import('../../assets/pkg/lumi_lib.js');
+            const wasm = await import('../../assets/pkg/lumi_lib.js')
             await wasm.default('../../assets/pkg/lumi_lib_bg.wasm')
 
             this.wasmInstance = wasm
         } catch (err) {
-            console.error('Error loading WebAssembly', err);
+            console.error('Error loading WebAssembly', err)
         }
     }
 

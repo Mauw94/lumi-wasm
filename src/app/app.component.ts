@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { WasmLoaderService } from './services/wasm-loader.service.js';
 import { FormsModule } from '@angular/forms';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -11,12 +12,15 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
-  userInput: string = '';
-  result: string[] = [];
+  userInput: string = ''
+  parsedText: SafeHtml | undefined
 
-  private wasmInstance: any;
+  private result: string[] = []
+  private wasmInstance: any
 
-  constructor(private wasmLoaderService: WasmLoaderService) { }
+  constructor(
+    private wasmLoaderService: WasmLoaderService,
+    private sanitizer: DomSanitizer) { }
 
   async ngOnInit(): Promise<void> {
     await this.wasmLoaderService.loadWasm()
@@ -27,7 +31,7 @@ export class AppComponent implements OnInit {
     return this.userInput.trim() === ''
   }
 
-  runCode() {
+  runCode(): void {
     try {
       if (this.userInput.trim() === '') {
         return
@@ -41,6 +45,20 @@ export class AppComponent implements OnInit {
   }
 
   private pruneRes(result: string[]): void {
-    this.result = result.filter(item => item !== 'null');
+    this.result = result.filter(item => item !== 'null')
+    let combined = this.result.join(" ")
+    this.parsedText = this.sanitizer.bypassSecurityTrustHtml(this.parseAnsiToHtml(combined))
+  }
+
+  private parseAnsiToHtml(text: string): string {
+    return text
+      .replace(/\x1b\[31m/g, '<span style="color: red;">')
+      .replace(/\x1b\[32m/g, '<span style="color: green;">')
+      .replace(/\x1b\[33m/g, '<span style="color: green;">')
+      .replace(/\x1b\[34m/g, '<span style="color: blue;">')
+      .replace(/\x1b\[35m/g, '<span style="color: magenta;">')
+      .replace(/\x1b\[36m/g, '<span style="color: cyan;">')
+      .replace(/\x1b\[37m/g, '<span style="color: white;">')
+      .replace(/\x1b\[0m/g, '</span>')
   }
 }

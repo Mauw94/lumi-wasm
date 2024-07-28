@@ -4,7 +4,6 @@
     <textarea placeholder="Type some lumi code here.." [(ngModel)]="userInput" class="textarea"></textarea>
     <button (click)="runCode()" [disabled]="isButtonDisabled()" class="send-button">Run</button>
   </div>
-  <div class="result-box">
-    <p>{{ result }}</p>
+  <div class="result-box" [innerHTML]="parsedText">
   </div>
 </div>
