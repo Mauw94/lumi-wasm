@@ -37,6 +37,8 @@ export class AppComponent implements OnInit {
         return
       }
 
+      this.result = []
+      this.parsedText = undefined
       this.pruneRes(this.wasmInstance.run_code(this.userInput))
       console.log(this.result)
     } catch (err) {
