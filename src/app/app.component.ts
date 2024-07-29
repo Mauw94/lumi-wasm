@@ -3,11 +3,12 @@ import { RouterOutlet } from '@angular/router';
 import { WasmLoaderService } from './services/wasm-loader.service.js';
 import { FormsModule } from '@angular/forms';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { MarkdownComponent } from 'ngx-markdown';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FormsModule],
+  imports: [RouterOutlet, FormsModule, MarkdownComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
