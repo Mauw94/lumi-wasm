@@ -1,15 +1,2 @@
-<div class="container">
-  <h2>Lumi WASM</h2>
-  <div class="content">
-    <textarea placeholder="Type some lumi code here.." [(ngModel)]="userInput" class="textarea"></textarea>
-    <button (click)="runCode()" [disabled]="isButtonDisabled()" class="send-button">Run</button>
-  </div>
-  <div class="result-box" [innerHTML]="parsedText">
-  </div>
-
-  <hr style="margin-top: 10%; margin-bottom: 10%;">
-
-  <h2>README</h2>
-  <markdown style="font-family: monospace;" lineNumbers [start]="1" [src]="'../../assets/pkg/README.md'">
-  </markdown>
-</div>
+<app-navigation></app-navigation>
+<router-outlet></router-outlet>
