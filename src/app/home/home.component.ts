@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { WasmLoaderService } from '../services/wasm-loader.service.js';
 import { FormsModule } from '@angular/forms';
@@ -12,7 +12,7 @@ import { MarkdownComponent } from 'ngx-markdown';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent  implements OnInit {
+export class HomeComponent implements OnInit {
   userInput: string = ''
   parsedText: SafeHtml | undefined
 
@@ -26,6 +26,13 @@ export class HomeComponent  implements OnInit {
   async ngOnInit(): Promise<void> {
     await this.wasmLoaderService.loadWasm()
     this.wasmInstance = this.wasmLoaderService.getWasmInstance()
+  }
+
+  @HostListener('window:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent): void {
+    if (event.ctrlKey && event.key === 'Enter') {
+      this.runCode()
+    }
   }
 
   isButtonDisabled(): boolean {
