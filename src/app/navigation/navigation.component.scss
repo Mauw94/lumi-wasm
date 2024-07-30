@@ -1,0 +1,10 @@
+.navbar-nav .nav-link {
+    font-weight: normal;
+    color: #000;
+    font-size: 20px;
+}
+
+.navbar-nav .nav-link.active {
+    font-weight: bold;
+    text-decoration: underline;
+}

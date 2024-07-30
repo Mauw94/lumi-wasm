@@ -1,17 +1,14 @@
-.header-container {
-    padding-top: 2%;
-    box-sizing: border-box;
-}
-
 .centered-card {
     width: 55%;
     margin: 0 auto;
+    padding-top: 2%;
+    box-sizing: border-box;
     border-radius: 0.25rem;
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.085);
 }
 
 .card-img {
-    width:50%;
+    width: 60%;
     height: auto;
     border-top-left-radius: calc(0.25rem - 1px);
     border-bottom-left-radius: calc(0.25rem - 1px);
@@ -29,4 +26,18 @@
 .card-text {
     font-size: 1rem;
     color: #6c757d;
+}
+
+.links {
+    margin-top: 15px;
+}
+
+a {
+    color: #2a91ff !important;
+    text-decoration: none !important;
+}
+
+a:hover {
+    color: #1c7adf !important;
+    text-decoration: underline !important;
 }
