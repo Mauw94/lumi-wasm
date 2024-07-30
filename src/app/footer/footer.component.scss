@@ -1,0 +1,27 @@
+.footer {
+    background-color: #f8f9fa;
+    /* Light gray background color */
+    padding: 1rem 0;
+    /* Padding for top and bottom */
+    border-top: 1px solid #e9ecef;
+    /* Light border at the top */
+}
+
+.footer-text {
+    margin: 0;
+    /* Remove default margin */
+    color: #6c757d;
+    /* Dark gray text color */
+}
+
+.footer-link {
+    color: #007bff;
+    /* Bootstrap primary color for links */
+    text-decoration: none;
+    /* Remove underline from links */
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+    /* Underline on hover for links */
+}

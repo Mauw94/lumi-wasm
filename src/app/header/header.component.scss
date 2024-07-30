@@ -1,0 +1,40 @@
+/* Style for the container that centers the card */
+.header-container {
+    padding-top: 2%; /* Space from the top */
+    box-sizing: border-box; /* Include padding in the element's total width and height */
+  }
+  
+  /* Style for the centered card */
+  .centered-card {
+    width: 65%;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
+  }
+  
+  /* Style for the card image */
+  .card-img {
+    width: 80%;
+    height: auto;
+    border-top-left-radius: calc(0.25rem - 1px);
+    border-bottom-left-radius: calc(0.25rem - 1px);
+  }
+  
+  /* Style for the card body */
+  .card-body {
+    padding: 1rem;
+  }
+  
+  /* Style for the card title */
+  .card-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Style for the card text */
+  .card-text {
+    font-size: 1rem;
+    color: #6c757d;
+  }
+  
