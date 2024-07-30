@@ -1,1 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+
+body {
+    font-family: monospace;
+}
+
+.navbar-nav .nav-link {
+    font-weight: normal;
+    color: #000;
+}
+
+.navbar-nav .nav-link.active {
+    font-weight: bold;
+    color: #007bff;
+    text-decoration: underline;
+}
