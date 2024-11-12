@@ -4,17 +4,19 @@ import { WasmLoaderService } from '../services/wasm-loader.service.js';
 import { FormsModule } from '@angular/forms';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { MarkdownComponent } from 'ngx-markdown';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-lumi',
   standalone: true,
-  imports: [RouterOutlet, FormsModule, MarkdownComponent],
+  imports: [FormsModule, CommonModule, MarkdownComponent],
   templateUrl: './lumi.component.html',
   styleUrl: './lumi.component.scss'
 })
 export class LumiComponent implements OnInit {
   userInput: string = ''
   parsedText: SafeHtml | undefined
+  showReadme: boolean = false
 
   private result: string[] = []
   private wasmInstance: any
@@ -54,6 +56,10 @@ export class LumiComponent implements OnInit {
     }
   }
 
+  toggleReadme(): void {
+    this.showReadme = !this.showReadme
+  }
+  
   private pruneRes(result: string[]): void {
     this.result = result.filter(item => item !== 'null')
     let combined = this.result.join(" ")

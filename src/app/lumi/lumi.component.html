@@ -7,6 +7,7 @@
 
     <hr style="margin-top: 10%; margin-bottom: 10%;">
 
-    <markdown style="font-family: monospace;" lineNumbers [start]="1" [src]="'../../assets/pkg/README.md'">
+    <button class="btn btn-outline-primary" (click)="toggleReadme()">Toggle ReadMe</button>
+    <markdown *ngIf="showReadme" style="font-family: monospace;" lineNumbers [start]="1" [src]="'../../assets/pkg/README.md'">
     </markdown>
 </div>
