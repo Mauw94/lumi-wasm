@@ -1,0 +1,14 @@
+<div class="input-container">
+    <input type="text" id="promptInput" class="form-control" [(ngModel)]="prompt"
+        placeholder="Enter a prompt for the image" />
+    <button (click)="generateAndDisplayImage()" class="btn btn-primary" type="button" [disabled]="isLoading">
+        <span *ngIf="!isLoading">Generate</span>
+        <span *ngIf="isLoading">
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Loading...
+        </span>
+    </button>
+</div>
+<div class="image-container">
+    <img id="resultImage" [src]="image" alt="Generated image will appear here" />
+</div>
