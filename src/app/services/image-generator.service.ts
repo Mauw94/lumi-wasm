@@ -10,7 +10,6 @@ export class ImageGeneratorService {
     private readonly headers = { Authorization: `Bearer ${environment.huggingFaceApiKey}` };
 
     public async generate(prompt: string): Promise<Blob> {
-        console.log(environment.huggingFaceApiKey)
         try {
             const response = await axios.post(this.API_URL, { inputs: prompt }, { headers: this.headers, responseType: 'blob' });
             const blob = response.data;
