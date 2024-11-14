@@ -1,8 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import axios, { AxiosRequestConfig } from 'axios';
-import { Image } from 'image-js';
 import { ImageGeneratorService } from '../services/image-generator.service';
 
 @Component({
@@ -35,7 +33,6 @@ export class ImageGenComponent {
     } catch (error) {
       console.error('Failed to generate image: ', error)
     }
-
   }
-
+  
 }
