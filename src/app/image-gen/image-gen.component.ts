@@ -25,12 +25,13 @@ export class ImageGenComponent {
       return;
     }
 
+    this.image = undefined;
+
     try {
       this.isLoading = true;
       const imageBlob = await this.imageGeneratorService.generate(this.prompt);
       this.image = URL.createObjectURL(imageBlob);
       this.isLoading = false;
-      this.image = undefined;
     } catch (error) {
       console.error('Failed to generate image: ', error)
       this.isLoading = false;
